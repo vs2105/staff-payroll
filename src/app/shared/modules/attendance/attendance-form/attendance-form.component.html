@@ -1,0 +1,72 @@
+
+<form class="example-form" [formGroup]="signupform" (ngSubmit)="attendanceformsubmit()">
+  <mat-dialog-content>
+  <div class="row">
+    <div class="col-12">
+      <h4 class="bg-danger p-3 text-white rounded d-flex justify-content-between align-items-center">Attendance
+        <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+      </h4>
+    </div>
+  </div> 
+ 
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Select Employee</mat-label>
+          <input formControlName="EmployeeName" matInput placeholder="employee Name" [matAutocomplete]="auto">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let name of filteredOptions | async" [value]="name">
+              {{name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Choose a date</mat-label>
+          <input formControlName="date" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+  
+      <div class="col-sm-6 mt-4">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>In-time</mat-label>
+          <input formControlName="inTime" matInput type="time" required>
+        </mat-form-field>
+      </div>
+  
+      <div class="col-sm-6 mt-4">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Out-time</mat-label>
+          <input formControlName="outTime" matInput type="time" required>
+        </mat-form-field>
+      </div>
+  
+      <div class="col-sm-6 mt-2">
+  
+        <p class="d-flex justify-content-between"><mat-checkbox formControlName="isfullday">IsFullDay</mat-checkbox>
+          <span *ngIf="workHours" [ngClass]="{'text-danger': workHours <= 7, 'text-success': workHours >= 8}">
+            {{workHours | number : '1.0-1'}}hr {{workHours >= 8 ? 'full Day' : 'half Day' }}</span>
+        </p>
+      </div>
+  
+    </div>
+    
+  
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+      
+  <button mat-raised-button color="primary" class="mx-2" type="submit" [disabled]="!workHours || workHours < 1">{{obj
+    ? 'Update' :
+    'Save'}}</button>
+  <button mat-raised-button color="warn" type="button" (click)="signupform.reset()">Reset</button>
+
+</mat-dialog-actions>
+</form>

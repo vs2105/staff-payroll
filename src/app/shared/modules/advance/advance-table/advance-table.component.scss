@@ -1,0 +1,37 @@
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+
+}
+
+h4 {
+    background-color: #071952;
+
+}
+
+td,
+th {
+    width: 19%;
+}
+
+th {
+    font-size: 14px;
+    background-color: green;
+
+    color: #fff;
+
+}
+
+@media screen and (max-width: 767px) {
+    h4 {
+        font-size: 16px;
+    }
+
+    .search>mat-form-field {
+        width: 100% !important;
+    }
+}

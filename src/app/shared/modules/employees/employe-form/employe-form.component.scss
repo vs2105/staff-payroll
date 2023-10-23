@@ -1,0 +1,13 @@
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+}
+
+.mt-4-5 {
+    margin-top: 33px;
+}
+
+@media screen and (max-width: 600px) {
+    .mt-4-5 {
+        margin-top: 0;
+    }
+}

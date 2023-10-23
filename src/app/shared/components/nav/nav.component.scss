@@ -1,0 +1,111 @@
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    background: rgba(0, 0, 0, .4);
+}
+
+.ac {
+    color: #fff;
+    // background-color: #222836;
+    background-color: orange !important;
+}
+
+mat-toolbar>span {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+
+::ng-deep .bg-s {
+    background-color: #0e1420;
+}
+
+mat-drawer {
+    width: 13%;
+    // background-color: #85f6b8;
+    background-color: #111926;
+    // position: fixed;
+}
+
+.logout {
+    position: absolute;
+    bottom: 50px;
+}
+
+// .close-icon {
+//     position: fixed;
+//     right: 13%;
+//     color: #fff;
+//     cursor: pointer;
+// }
+
+mat-drawer-container {
+    height: calc(100vh - 64px);
+    background-color: #ededed;
+
+}
+
+mat-nav-list>a {
+    color: #c4cbd5;
+}
+
+mat-nav-list>a:hover,
+mat-nav-list>a:active,
+mat-nav-list>a:focus {
+    color: #fff;
+    background-color: #222836;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color: #000000, $alpha: .6);
+}
+
+.heading {
+    display: none !important;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+    .logo {
+        display: none;
+
+    }
+
+
+    mat-drawer-container {
+        height: calc(100vh - 60px);
+
+    }
+
+
+    mat-drawer {
+        width: 50%;
+    }
+
+    .close-icon {
+        right: 152px;
+
+    }
+
+    .heading {
+        display: flex !important;
+    }
+}

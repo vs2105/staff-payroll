@@ -1,0 +1,106 @@
+<form [formGroup]="leaveForm" (ngSubmit)="onLeaveFormSubmit()">
+  <mat-dialog-content>
+    <h4 class="mb-3 d-inline" *ngIf="!leaveObj">Leave</h4>
+    <h4 class="mb-3 d-inline" *ngIf="leaveObj">Update Leave</h4>
+    <hr class="bg-primary">
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Select Employee</mat-label>
+          <input type="text" placeholder="Search" aria-label="Number" matInput formControlName="empName"
+            [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let empName of filteredOptions | async" [value]="empName">
+              {{empName}}
+            </mat-option>
+          </mat-autocomplete>
+          <mat-icon [ngClass]="{'text-danger': !leaveForm.controls['empName'].valid}"
+            matSuffix>{{leaveForm.controls['empName'].invalid ? 'sentiment_very_dissatisfied' :
+            'sentiment_very_satisfied'}}</mat-icon>
+          <mat-error>This field is Required</mat-error>
+        </mat-form-field>
+        <!--  
+              <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Select Employee</mat-label>
+                    <mat-select formControlName="empName">
+                      <mat-option *ngFor="let  empName of employeeNameArray" [value]="empName">
+                        {{empName }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-icon [ngClass]="{'text-danger': !leaveForm.controls['empName'].valid}" matSuffix>{{leaveForm.controls['empName'].invalid ? 'sentiment_very_dissatisfied' : 'sentiment_very_satisfied'}}</mat-icon>
+
+                    <mat-error>This field is Required</mat-error>
+                  </mat-form-field> -->
+
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Contact No</mat-label>
+          <input matInput placeholder="Enter Contact Number" formControlName="contact">
+          <mat-error>this field is mandatory</mat-error>
+          <mat-icon [ngClass]="{'text-danger': !leaveForm.controls['contact'].valid}"
+            matSuffix>{{leaveForm.controls['contact'].invalid ? 'sentiment_very_dissatisfied' :
+            'sentiment_very_satisfied'}}</mat-icon>
+
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field color="primary" appearance="fill" class="example-full-width w-100">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="pickerName" formControlName="startDate" [min]="todaysDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="pickerName"></mat-datepicker-toggle>
+          <mat-datepicker #pickerName></mat-datepicker>
+          <mat-error>This field is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-6">
+        <mat-form-field color="primary" appearance="fill" class="example-full-width w-100">
+          <mat-label>End Date</mat-label>
+          <input matInput [matDatepicker]="pickerName2" formControlName="endDate"
+            [min]="todaysDate && leaveForm.controls['startDate'].value">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="pickerName2"></mat-datepicker-toggle>
+          <mat-datepicker #pickerName2 color="primary"></mat-datepicker>
+
+          <mat-error>This field is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Reason</mat-label>
+          <!-- <input  placeholder="Enter Last Name" >
+                     -->
+          <textarea rows="3" matInput formControlName="reason"></textarea>
+          <mat-icon [ngClass]="{'text-danger': !leaveForm.controls['reason'].valid}"
+            matSuffix>{{leaveForm.controls['reason'].invalid ? 'sentiment_very_dissatisfied' :
+            'sentiment_very_satisfied'}}</mat-icon>
+          <mat-error>this field is mandatory</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+
+    <hr class="bg-primary">
+
+  </mat-dialog-content>
+  <mat-dialog-actions class="d-flex justify-content-between">
+    <div>
+      <button mat-stroked-button type="button" color="primary" (click)="leaveForm.reset()">
+        Reset
+      </button>
+
+    </div>
+    <div>
+      <button mat-stroked-button type="button" mat-dialog-close>Cancel</button>
+      <button mat-raised-button [color]="!leaveObj ? 'primary': 'accent'">{{!leaveObj? 'Submit': 'Update'}}</button>
+    </div>
+  </mat-dialog-actions>
+</form>

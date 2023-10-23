@@ -1,0 +1,175 @@
+<form [formGroup]="employeForm" (ngSubmit)="employeeHandler()">
+    <mat-dialog-content>
+
+        <h4 class="mb-3 d-inline" *ngIf="!obj">New Employee</h4>
+        <h4 class="mb-3 d-inline" *ngIf="obj">Update Employee Information</h4>
+        <hr class="bg-primary">
+        <div class="row">
+
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="Enter First Name" formControlName="fname">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['fname'].valid}"
+                        matSuffix>{{employeForm.controls['fname'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="Enter Last Name" formControlName="lname">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['lname'].valid}"
+                        matSuffix>{{employeForm.controls['lname'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Contact No</mat-label>
+                    <input matInput placeholder="Enter Contact Number" formControlName="contact" inputmode="tel">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['contact'].valid}"
+                        matSuffix>{{employeForm.controls['contact'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+
+            <div class="col-md-4 mt-4-5">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Email Id</mat-label>
+                    <input matInput placeholder="Enter Email Id" formControlName="email">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['email'].valid}"
+                        matSuffix>{{employeForm.controls['email'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4 mt-4-5">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Current Address</mat-label>
+                    <textarea matInput placeholder="Enter current Address" rows="3"
+                        formControlName="currentAddress"></textarea>
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['currentAddress'].valid}"
+                        matSuffix>{{employeForm.controls['currentAddress'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-checkbox (input)="sameAddres()" color="primary" class="m-0"
+                    [disabled]="employeForm.controls['currentAddress'].invalid">Same as Current Address</mat-checkbox>
+
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Perment Address</mat-label>
+                    <textarea matInput placeholder="Enter perment Address" rows="3"
+                        formControlName="permentAddress"></textarea>
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['permentAddress'].valid}"
+                        matSuffix>{{employeForm.controls['permentAddress'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City Name" formControlName="city">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['city'].valid}"
+                        matSuffix>{{employeForm.controls['city'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="Enter State Name" formControlName="state">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['fname'].valid}"
+                        matSuffix>{{employeForm.controls['state'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Pincode</mat-label>
+                    <input matInput placeholder="Enter Pincode" formControlName="pincode">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['pincode'].valid}"
+                        matSuffix>{{employeForm.controls['pincode'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4 ">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Bank Name</mat-label>
+                    <input matInput placeholder="Enter Bank Name" formControlName="bankName">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['bankName'].valid}"
+                        matSuffix>{{employeForm.controls['bankName'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Ifsc Code</mat-label>
+                    <input matInput placeholder="Enter Ifsc Code" formControlName="ifscCode">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['ifscCode'].valid}"
+                        matSuffix>{{employeForm.controls['ifscCode'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4 ">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Salary</mat-label>
+                    <input matInput placeholder="Enter Salary" formControlName="salary">
+                    <mat-icon [ngClass]="{'text-danger': !employeForm.controls['salary'].valid}"
+                        matSuffix>{{employeForm.controls['salary'].invalid ? 'sentiment_very_dissatisfied' :
+                        'sentiment_very_satisfied'}}</mat-icon>
+                    <mat-error>this field is mandatory</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <hr class="bg-primary">
+
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="d-flex justify-content-between">
+        <div>
+            <button mat-stroked-button color="primary" (click)="employeForm.reset()" type="button">
+                Reset
+            </button>
+        </div>
+        <div>
+            <button mat-stroked-button type="button" mat-dialog-close>cancel</button>
+            <button mat-raised-button [color]="obj? 'accent' : 'primary'">{{!obj ? 'Submit' : 'Update'}}</button>
+        </div>
+
+    </mat-dialog-actions>
+</form>

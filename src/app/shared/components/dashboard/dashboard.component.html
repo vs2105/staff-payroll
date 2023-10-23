@@ -1,0 +1,38 @@
+<div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="title">Total Employee</h4>
+                    <span class="display-3">{{totalEmployee}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="title">Total Leaves Count</h4>
+                    <span class="display-3">{{totalLeaves$ | async}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="title">Total Advance Count</h4>
+                    <span class="display-3">{{totalAdvanceCount$ | async}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="title">Total Salary Count</h4>
+                    <span class="display-3">{{totalSalaryCount$ | async}}</span>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+

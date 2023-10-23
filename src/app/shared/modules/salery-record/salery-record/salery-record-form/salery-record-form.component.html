@@ -1,0 +1,73 @@
+<form [formGroup]="submitsaleryform" (ngSubmit)="saleryformsubmit()">
+    <mat-dialog-content>
+        <div class="row">
+            <div class="col-12">
+                <h4 class="bg-danger p-3 text-white rounded d-flex justify-content-between align-items-center">salery
+                    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+                </h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Select Employee</mat-label>
+                    <input matInput type="text" name="" id="" placeholder="employee Name" formControlName="EmpName"
+                        [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label> Salery date</mat-label>
+                    <input formControlName="date" matInput [matDatepicker]="picker" formControlName="saleryDate">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Total Advance</mat-label>
+                    <input matInput type="text" name="" id="" placeholder="Advance" formControlName="totalAdvance"
+                        type="number">
+                    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                </mat-form-field>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Present Days</mat-label>
+                    <input matInput type="text" name="" id="" placeholder="Present Days In Number"
+                        formControlName="presentDays">
+                    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                </mat-form-field>
+
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Salery Amount</mat-label>
+                    <input type="number" matInput type="text" name="" id="" placeholder="Salery"
+                        formControlName="saleryAmount">
+                    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                </mat-form-field>
+
+            </div>
+
+        </div>
+
+
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align=end>
+        <button mat-raised-button color="primary" type="submit"> {{ data ? 'update' : 'save'}} </button>
+        <button mat-raised-button type="button" (click)="submitsaleryform.reset()"> Reset </button>
+    </mat-dialog-actions>
+
+
+</form>

@@ -1,0 +1,17 @@
+.card {
+    height: 160px;
+    border-left: 4px solid orange;
+}
+
+.item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: #0009;
+    font-size: large;
+    font-weight: 500;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}

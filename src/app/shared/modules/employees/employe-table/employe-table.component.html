@@ -1,0 +1,128 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="p-3 text-white rounded d-flex justify-content-between align-items-center rounded-pill shadow">Employee Portal 
+            <button  mat-raised-button (click)="openEmpForm()">Add Employe</button>
+        </h4>
+
+        <div class="search  mt-3 text-right d-flex justify-content-center align-items-center">
+          <mat-form-field class="w-50 " >
+            <mat-label>Search Employee</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Type Employee Information" #input>
+            <mat-icon matSuffix class="mr-2">search</mat-icon>
+        </mat-form-field>
+        </div>
+       
+          <div class="table-responsive">
+
+            <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource" matSort class="mat-table">
+            
+                <!-- ID Column -->
+                <!-- <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                  <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                </ng-container> -->
+            
+                <!-- contact Column -->
+                <ng-container matColumnDef="contact">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact </th>
+                  <td mat-cell *matCellDef="let row"> {{row.contact}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                  <td mat-cell *matCellDef="let row"> {{row.fname}} {{row.lname}} </td>
+                </ng-container>
+            
+                <!-- email Column -->
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                  <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+                </ng-container>
+  
+                <!-- currentAddress Column -->
+                <!-- <ng-container matColumnDef="currentAddress">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> currentAddress </th>
+                  <td mat-cell *matCellDef="let row"> {{row.currentAddress}} </td>
+                </ng-container> -->
+  
+                <!-- permentAddress Column -->
+                <!-- <ng-container matColumnDef="permentAddress">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                  <td mat-cell *matCellDef="let row"> {{row.permentAddress}} </td>
+                </ng-container>
+             -->
+                    <!-- city Column -->
+                <ng-container matColumnDef="city">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+                  <td mat-cell *matCellDef="let row"> {{row.city}} </td>
+                </ng-container>
+  
+                  <!-- state Column -->
+                <ng-container matColumnDef="state">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+                  <td mat-cell *matCellDef="let row"> {{row.state}} </td>
+                </ng-container>
+  
+                    <!-- pincode Column -->
+                <ng-container matColumnDef="pincode">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> pincode </th>
+                  <td mat-cell *matCellDef="let row"> {{row.pincode}} </td>
+                </ng-container>
+  
+                    bankName Column
+                <ng-container matColumnDef="bankName">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> bankName </th>
+                  <td mat-cell *matCellDef="let row"> {{row.bankName}} </td>
+                </ng-container>
+  
+                    <!-- ifscCode Column -->
+                <!-- <ng-container matColumnDef="ifscCode">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> ifscCode </th>
+                  <td mat-cell *matCellDef="let row"> {{row.ifscCode}} </td>
+                </ng-container> -->
+  
+                    <!-- salary Column -->
+                <ng-container matColumnDef="salary">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> salary </th>
+                  <td mat-cell *matCellDef="let row"> {{row.salary}} </td>
+                </ng-container>
+  
+                    <!-- Edit Column -->
+                <ng-container matColumnDef="action1">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button mat-mini-fab color="primary" (click)="onEdit(row)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+
+                    <!-- Delete Column -->
+                <ng-container matColumnDef="action2">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
+                  <td mat-cell *matCellDef="let row">
+                    <button mat-mini-fab color="warn" (click)="onEmployeRemove(row)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+  
+                
+  
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+              </table>
+            
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" class="w-100"></mat-paginator>
+            </div>
+          </div>
+          
+    </div>
+</div>
